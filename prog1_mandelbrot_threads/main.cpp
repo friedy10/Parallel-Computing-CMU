@@ -155,9 +155,9 @@ int main(int argc, char** argv) {
     printf("[mandelbrot thread]:\t\t[%.3f] ms\n", minThread * 1000);
     writePPMImage(output_thread, width, height, "mandelbrot-thread.ppm", maxIterations);
 
-    for(int i = 0; i < (width*800); i++){
+    /*for(int i = 0; i < (width*800); i++){
         printf("%d\n", output_thread[i]);
-    }
+    }*/
 
     if (! verifyResult (output_serial, output_thread, width, height)) {
         printf ("Error : Output from threads does not match serial output\n");

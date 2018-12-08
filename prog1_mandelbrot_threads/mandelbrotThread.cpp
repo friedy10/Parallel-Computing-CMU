@@ -108,6 +108,9 @@ void mandelbrotThread(
     for(int i = 0; i < (args[0].width*800); i++){
         output[i] = args[0].output[i];
     }
+    for(int i = width*splitHeight; i < (width*800); i++){
+        output[i] = args[1].output[i];
+    }
     
     //memcpy(output, args[0].output, sizeof(args[0].output));
 }
