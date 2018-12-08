@@ -105,12 +105,22 @@ void mandelbrotThread(
     for (int i=1; i<numThreads; i++)
         pthread_join(workers[i], NULL);
 
-    for(int i = 0; i < (args[0].width*800); i++){
+    int st = 0;
+    int end = width*splitHeight;
+    for(int i = 0; i < numThreads; i++){
+        for(int j = st; j < end; j++){
+            output[j] = args[i].output[j];
+        }
+        st +=(width*splitHeight);
+        end +=(width*splitHeight);
+    }
+
+   /* for(int i = 0; i < (args[0].width*800); i++){
         output[i] = args[0].output[i];
     }
     for(int i = width*splitHeight; i < (width*800); i++){
         output[i] = args[1].output[i];
-    }
+    }*/
     
     //memcpy(output, args[0].output, sizeof(args[0].output));
 }
